@@ -1,0 +1,16 @@
+build/
+dist/
+__pycache__/
+*.pyc
+*.pyo
+*.spec.tmp
+smoke/
+smoke_start.py
+*.log
+*.txt
+!README.md
+!requirements.txt
+.venv/
+venv/
+env/
+*.egg-info/

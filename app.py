@@ -646,7 +646,6 @@ class MainWindow(QMainWindow):
         self.input_mode = "mic"
         self.device_combo = QComboBox()
         self.audio_file_edit = QLineEdit()
-        self.cuda_runtime_edit = QLineEdit()
         self.output_file_edit = QLineEdit(str(Path.cwd() / "transcript.txt"))
         self.model_combo = QComboBox()
         self.language_combo = QComboBox()
@@ -711,10 +710,6 @@ class MainWindow(QMainWindow):
         browse_audio_button.clicked.connect(self.browse_audio_file)
         self.audio_file_edit.setPlaceholderText("Choose an audio file...")
 
-        browse_cuda_button = QPushButton("Browse")
-        browse_cuda_button.clicked.connect(self.browse_cuda_runtime)
-        self.cuda_runtime_edit.setPlaceholderText("CUDA runtime folder with cublas64_12.dll and cudnn64_9.dll")
-
         self.model_combo.addItems(["tiny", "base", "small", "medium", "large-v3"])
         self.model_combo.setCurrentText("small")
 
@@ -738,16 +733,13 @@ class MainWindow(QMainWindow):
         settings_layout.addWidget(QLabel("Audio file"), 2, 0)
         settings_layout.addWidget(self.audio_file_edit, 2, 1)
         settings_layout.addWidget(browse_audio_button, 2, 2)
-        settings_layout.addWidget(QLabel("CUDA runtime"), 3, 0)
-        settings_layout.addWidget(self.cuda_runtime_edit, 3, 1)
-        settings_layout.addWidget(browse_cuda_button, 3, 2)
-        settings_layout.addWidget(QLabel("Model"), 4, 0)
-        settings_layout.addWidget(self.model_combo, 4, 1)
-        settings_layout.addWidget(QLabel("Language"), 5, 0)
-        settings_layout.addWidget(self.language_combo, 5, 1)
-        settings_layout.addWidget(QLabel("Chunk size"), 6, 0)
-        settings_layout.addWidget(self.chunk_spin, 6, 1)
-        settings_layout.addWidget(self.prefer_gpu_checkbox, 6, 2)
+        settings_layout.addWidget(QLabel("Model"), 3, 0)
+        settings_layout.addWidget(self.model_combo, 3, 1)
+        settings_layout.addWidget(QLabel("Language"), 4, 0)
+        settings_layout.addWidget(self.language_combo, 4, 1)
+        settings_layout.addWidget(QLabel("Chunk size"), 5, 0)
+        settings_layout.addWidget(self.chunk_spin, 5, 1)
+        settings_layout.addWidget(self.prefer_gpu_checkbox, 5, 2)
 
         output_row = QHBoxLayout()
         output_row.addWidget(QLabel("Transcript file"))
@@ -863,15 +855,6 @@ class MainWindow(QMainWindow):
         if path:
             self.audio_file_edit.setText(path)
 
-    def browse_cuda_runtime(self) -> None:
-        path = QFileDialog.getExistingDirectory(
-            self,
-            "Choose CUDA runtime folder",
-            str(Path(r"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA")),
-        )
-        if path:
-            self.cuda_runtime_edit.setText(path)
-
     def _touch_output_file(self, output_path: Path) -> None:
         output_path.parent.mkdir(parents=True, exist_ok=True)
         if not output_path.exists():
@@ -908,24 +891,18 @@ class MainWindow(QMainWindow):
             return
 
         self.status_label.setText("Initializing transcription...")
-        self.console_window.show()
-        self.transcript_window.show()
-        self.console_window.raise_()
-        self.transcript_window.raise_()
         self.log_event("Start button clicked")
 
         output_text = self.output_file_edit.text().strip()
         output_path = Path(output_text) if output_text else None
-        cuda_text = self.cuda_runtime_edit.text().strip()
-        cuda_runtime_dir = Path(cuda_text) if cuda_text else None
-        if cuda_runtime_dir is None:
-            detected_cuda, notes = find_cuda_runtime_dirs()
-            if detected_cuda:
-                self.log_event("Auto-detected CUDA runtime paths: " + ", ".join(str(path) for path in detected_cuda))
-            elif notes:
-                for note in notes:
-                    self.log_event(note)
-                self.log_event("CUDA 13 was found, but this backend needs CUDA 12 cuBLAS + cuDNN 9.")
+        cuda_runtime_dir = None
+        detected_cuda, notes = find_cuda_runtime_dirs()
+        if detected_cuda:
+            self.log_event("Auto-detected CUDA runtime paths: " + ", ".join(str(path) for path in detected_cuda))
+        elif notes:
+            for note in notes:
+                self.log_event(note)
+            self.log_event("CUDA 13 was found, but this backend needs CUDA 12 cuBLAS + cuDNN 9.")
 
         self.log_event(
             "Launch request: "

@@ -8,7 +8,6 @@ A small Windows desktop app for live microphone transcription or one-off audio-f
 - Choose a Whisper model size
 - Toggle `Use GPU` on or off
 - Auto-detect bundled CUDA 12 runtime DLLs when available
-- Point the app at a CUDA runtime folder if you have one installed
 - Save transcripts to a text file while also showing them in the UI
 - Copy or clear the live transcript
 - Separate console and live transcript windows

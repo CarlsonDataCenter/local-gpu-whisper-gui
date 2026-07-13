@@ -55,7 +55,7 @@ The production setup package requests Administrator permission so it can registe
 
 ## License
 
-The application source code is released under the Carlson Data Center Open Source License 1.0. See `LICENSE`.
+The application source code is released under the CDC Open Source License 1.0. See `LICENSE`.
 
 Third-party dependencies, NVIDIA CUDA/cuDNN runtime files, Qt/PySide components, Whisper model files, trademarks, and drivers remain governed by their own separate licenses and terms.
 

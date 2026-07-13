@@ -2,6 +2,10 @@
 
 A small Windows desktop app for live microphone transcription or one-off audio-file transcription with local Whisper inference.
 
+## Built With
+
+This app was built with help from OpenAI Codex.
+
 ## Download
 
 Download the latest Windows installer from the GitHub Releases page and run `LocalGPUWhisper-Setup.exe`.

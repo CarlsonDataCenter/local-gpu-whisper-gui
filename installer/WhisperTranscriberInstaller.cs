@@ -18,7 +18,7 @@ internal static class WhisperTranscriberInstaller
     private const string DefaultFolderName = "Local-GPU-Whisper";
     private const string InstallMarkerFile = ".local-gpu-whisper-install";
     private const string UninstallKeyPath = @"Software\Microsoft\Windows\CurrentVersion\Uninstall\CarlsonDataCenter.LocalGPUWhisper";
-    private const string ProductUrl = "https://github.com/CarlsonDataCenter/local-gpu-whisper";
+    private const string ProductUrl = "https://github.com/CarlsonDataCenter/local-gpu-whisper-gui";
 
     [STAThread]
     private static int Main(string[] args)

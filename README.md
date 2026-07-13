@@ -111,6 +111,22 @@ The production setup package requests Administrator permission so it can registe
 - NVIDIA GPU drivers are not bundled. Install current NVIDIA display/GPU drivers from NVIDIA before using GPU mode.
 - The file input mode accepts common audio formats. For microphone mode, the app captures at the device's rate and resamples before transcription.
 
+## Software Sources
+
+This project is built on top of several open-source and redistributable software components:
+
+- Python: https://www.python.org/
+- faster-whisper: https://github.com/SYSTRAN/faster-whisper
+- CTranslate2: https://github.com/OpenNMT/CTranslate2
+- PySide6 / Qt for Python: https://doc.qt.io/qtforpython-6/
+- NumPy: https://numpy.org/
+- sounddevice / PortAudio: https://python-sounddevice.readthedocs.io/ and https://www.portaudio.com/
+- PyInstaller: https://pyinstaller.org/
+- NVIDIA CUDA Toolkit runtime components: https://developer.nvidia.com/cuda-toolkit
+- NVIDIA cuDNN runtime components: https://developer.nvidia.com/cudnn
+
+The packaged installer bundles only the runtime components needed by the app where permitted by the relevant upstream terms. NVIDIA GPU drivers are not bundled.
+
 ## License
 
 The application source code is released under the CDC OSS License 1.0. See `LICENSE`.

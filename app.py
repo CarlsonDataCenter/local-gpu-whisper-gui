@@ -12,6 +12,7 @@ from typing import Callable, List, Optional, Tuple
 
 import numpy as np
 from PySide6.QtCore import QTimer, Qt
+from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import (
     QApplication,
     QButtonGroup,
@@ -46,6 +47,16 @@ TARGET_SAMPLE_RATE = 16000
 REQUIRED_CUDA_DLLS = ("cublas64_12.dll", "cudnn64_9.dll")
 _SOUNDDEVICE_MODULE = None
 _SOUNDDEVICE_ERROR: Optional[Exception] = None
+
+
+def resource_path(*parts: str) -> Path:
+    base_dir = Path(getattr(sys, "_MEIPASS", Path(__file__).resolve().parent))
+    return base_dir.joinpath(*parts)
+
+
+def app_icon() -> QIcon:
+    icon_path = resource_path("assets", "app.ico")
+    return QIcon(str(icon_path)) if icon_path.exists() else QIcon()
 
 
 @dataclass
@@ -608,6 +619,7 @@ class TextWindow(QMainWindow):
     def __init__(self, title: str, placeholder: str = ""):
         super().__init__()
         self.setWindowTitle(title)
+        self.setWindowIcon(app_icon())
         self.resize(900, 500)
         self.text_edit = QPlainTextEdit()
         self.text_edit.setReadOnly(True)
@@ -632,6 +644,7 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Local GPU Whisper Transcriber")
+        self.setWindowIcon(app_icon())
         self.resize(1100, 800)
 
         self.event_queue: "queue.Queue[tuple]" = queue.Queue()
@@ -1060,6 +1073,7 @@ class MainWindow(QMainWindow):
 
 def main() -> None:
     app = QApplication([])
+    app.setWindowIcon(app_icon())
     window = MainWindow()
     window.show()
     app.exec()

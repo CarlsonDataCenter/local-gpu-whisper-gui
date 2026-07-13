@@ -1,4 +1,4 @@
-# Local GPU Whisper Transcriber
+# Local GPU Whisper Transcriber GUI
 
 A small Windows desktop app for live microphone transcription or one-off audio-file transcription with local Whisper inference.
 

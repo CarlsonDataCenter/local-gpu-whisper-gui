@@ -53,6 +53,12 @@ The production setup package requests Administrator permission so it can registe
 - NVIDIA GPU drivers are not bundled. Install current NVIDIA display/GPU drivers from NVIDIA before using GPU mode.
 - The file input mode accepts common audio formats. For microphone mode, the app captures at the device's rate and resamples before transcription.
 
+## License
+
+The application source code is released under the Carlson Data Center Open Source License 1.0. See `LICENSE`.
+
+Third-party dependencies, NVIDIA CUDA/cuDNN runtime files, Qt/PySide components, Whisper model files, trademarks, and drivers remain governed by their own separate licenses and terms.
+
 ## Warranty
 
 This software is provided as-is with zero warranties. Carlson Data Center and contributors are not responsible for transcription accuracy, data loss, hardware issues, driver issues, or any damages from using the software.

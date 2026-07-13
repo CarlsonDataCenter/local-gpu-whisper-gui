@@ -1,0 +1,37 @@
+Carlson Data Center Open Source License
+Version 1.0
+
+Copyright (c) 2026 Carlson Data Center
+
+Permission is granted, free of charge, to any person obtaining a copy of this
+software and associated documentation files to use, copy, modify, merge,
+publish, distribute, sublicense, and sell copies of the software, subject to the
+following conditions:
+
+1. The above copyright notice and this license notice must be included in all
+   copies or substantial portions of the software.
+
+2. Modified versions should clearly state that changes were made, so users can
+   tell what came from the original project and what was changed later.
+
+3. Carlson Data Center, Codex, OpenAI, NVIDIA, Qt, SYSTRAN, OpenNMT, and other
+   third-party projects or vendors are not responsible for modified versions
+   unless they explicitly say otherwise.
+
+4. This license applies only to the original application source code and
+   project files owned by Carlson Data Center. Third-party dependencies,
+   libraries, runtimes, model files, drivers, icons, trademarks, and bundled
+   redistributables remain governed by their own separate licenses and terms.
+
+5. This license does not grant permission to use the names, logos, or
+   trademarks of Carlson Data Center, NVIDIA, Qt, SYSTRAN, OpenNMT, OpenAI, or
+   any other third party to imply sponsorship, endorsement, or affiliation.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE, TRANSCRIPTION ACCURACY, HARDWARE COMPATIBILITY, AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE
+FOR ANY CLAIM, DAMAGES, DATA LOSS, HARDWARE ISSUE, DRIVER ISSUE, OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING FROM,
+OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

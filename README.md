@@ -8,19 +8,73 @@ This app was built with help from OpenAI Codex.
 
 ## Download
 
-Download the latest Windows installer from the GitHub Releases page and run `LocalGPUWhisper-Setup.exe`.
+Download the latest Windows installer from the GitHub Releases page:
+
+https://github.com/CarlsonDataCenter/local-gpu-whisper-gui/releases
+
+Run `LocalGPUWhisper-Setup.exe` and follow the installer prompts.
 
 The installer includes the application, Python runtime dependencies, and the NVIDIA CUDA/cuDNN runtime DLLs used by the bundled Whisper backend. Users still need a compatible NVIDIA GPU driver installed separately for GPU mode.
 
 ## Features
 
-- Select a microphone or an audio file
-- Choose a Whisper model size
-- Toggle `Use GPU` on or off
-- Auto-detect bundled CUDA 12 runtime DLLs when available
-- Save transcripts to a text file while also showing them in the UI
-- Copy or clear the live transcript
-- Separate console and live transcript windows
+- File transcription for common audio files such as WAV, MP3, M4A, FLAC, and similar formats supported by the bundled audio stack
+- Live microphone transcription for recording and transcribing speech from a selected input device
+- Local Whisper inference using `faster-whisper` and `ctranslate2`
+- Whisper model selector for balancing speed and accuracy
+- `Use GPU` toggle for NVIDIA GPU acceleration, with CPU fallback when GPU mode is unavailable
+- Bundled CUDA 12/cuDNN runtime DLLs required by the app backend
+- Static activity log inside the main window so you can see model loading, GPU fallback, chunks, and transcription progress
+- Optional pop-out activity log window
+- Optional pop-out live transcript window
+- Output file picker for choosing where the transcript is saved
+- `Open Output File` button after transcription finishes
+- Copy and clear controls for the live transcript
+- Windows installer with folder selection, shortcuts, and Programs and Features uninstall entry
+
+## How To Use
+
+1. Install the app with `LocalGPUWhisper-Setup.exe`.
+2. Open `Local GPU Whisper Transcriber` from the Start Menu or Desktop shortcut.
+3. Pick either `Audio file` mode or `Microphone` mode.
+4. Choose the input file or microphone device.
+5. Choose an output `.txt` file for the transcript.
+6. Pick a Whisper model. Smaller models are faster; larger models are usually more accurate.
+7. Leave `Use GPU` enabled if you have a supported NVIDIA GPU and driver, or turn it off to force CPU mode.
+8. Click `Start Transcription`.
+9. Watch the `Activity` box for model loading, chunk progress, GPU/CPU status, and completion messages.
+10. When transcription finishes, click `Open Output File` to view the saved transcript.
+
+## Audio File Mode
+
+Use audio file mode when you already have a recording.
+
+1. Select `Audio file`.
+2. Click the input browse button and choose your audio file.
+3. Choose where the transcript should be saved.
+4. Click `Start Transcription`.
+
+The app writes transcript text to the selected output file as it processes the audio and also shows transcript text in the UI.
+
+## Microphone Mode
+
+Use microphone mode for live speech transcription.
+
+1. Select `Microphone`.
+2. Choose your microphone/input device.
+3. Choose where the transcript should be saved.
+4. Click `Start Transcription`.
+5. Speak into the selected microphone.
+6. Click `Stop` when finished.
+
+For live transcription, smaller models such as `small` or `medium` are recommended because they respond faster.
+
+## Logs And Transcript Windows
+
+- The main `Activity` box shows what the app is doing, including model loading, transcription chunks, CPU/GPU status, and errors.
+- `Show Logs` opens a separate activity log window if you want more room.
+- `Show Transcript` opens a separate live transcript window.
+- These pop-out windows are optional and do not open automatically.
 
 ## Setup
 
@@ -47,7 +101,7 @@ pyinstaller --noconsole --onefile --clean --name WhisperTranscriber --collect-al
 
 ## Production Installer
 
-The production setup package requests Administrator permission so it can register with classic Windows Programs and Features, defaults to `%LOCALAPPDATA%\Local-GPU-Whisper`, lets users choose another install folder, shows install progress while extracting files, creates Desktop and Start Menu shortcuts, and registers an uninstall entry with publisher `Carlson Data Center` and version `1.0.0.0`.
+The production setup package requests Administrator permission so it can register with classic Windows Programs and Features, defaults to `%LOCALAPPDATA%\Local-GPU-Whisper`, lets users choose another install folder, shows install progress while extracting files, creates Desktop and Start Menu shortcuts, and registers an uninstall entry with publisher `Carlson Data Center`.
 
 ## Notes
 

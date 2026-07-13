@@ -1,6 +1,13 @@
-# Local GPU Whisper Transcriber 1.0.0.0
+# Local GPU Whisper Transcriber 1.0.1
 
-Initial production installer release for Windows.
+Maintenance release for the public GitHub repository.
+
+## What's Changed
+
+- Updated public project links from `local-gpu-whisper` to `local-gpu-whisper-gui` so the repository is easier to find when searching for a Whisper GUI.
+- Rebuilt the Windows setup package with the updated repository URL used by the installer metadata.
+- Expanded the README with program features and basic usage instructions for file transcription, microphone transcription, logs, live transcript windows, CPU mode, and GPU mode.
+- Kept the same application functionality as the initial production build.
 
 ## What's Included
 
